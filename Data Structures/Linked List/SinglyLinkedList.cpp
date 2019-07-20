@@ -89,9 +89,11 @@ class linked_list {
 			 	T value = data->get_data();
 			 	this->first = this->first->get_next();
 			 	delete data;
+			 	--length;
 			 	return value;
 			 }
 		 }
+		 
 		 void print_list() {
 		 	node<T> *temp = first;
 		 	while(temp!=NULL) {
