@@ -88,6 +88,8 @@ class linked_list {
 			 	node<T> *data = first;
 			 	T value = data->get_data();
 			 	this->first = this->first->get_next();
+			 	if(first == NULL) 
+			 		this->last = NULL;
 			 	delete data;
 			 	--length;
 			 	return value;
