@@ -60,6 +60,15 @@ class undirected_graph {
 			graph[u].remove(v);
 			edges--;
 		}
+		
+		set<V> get_vertices() {
+			return vertices;
+		}
+		
+		list<V> get_edges(V v) {
+			return graph[v];
+		} 
+		
 		void print_graph() {
 			for(auto it1 = vertices.begin(); it1 != vertices.end(); it1++) {
 				cout<<"["<<*it1<<"]"<<":";
@@ -73,28 +82,3 @@ class undirected_graph {
 		
 };
 
-int main() {
-	undirected_graph<char> graph;
-	// Add vertices
-	graph.add_vertex('r');
-	graph.add_vertex('s');
-	graph.add_vertex('t');
-	graph.add_vertex('u');
-	graph.add_vertex('v');
-	graph.add_vertex('w');
-	graph.add_vertex('x');
-	graph.add_vertex('y');
-	//Add Edges
-	graph.addEdge('r','s');
-	graph.addEdge('r','v');
-	graph.addEdge('s','w');
-	graph.addEdge('w','t');
-	graph.addEdge('w','x');
-	graph.addEdge('t','x');
-	graph.addEdge('t','u');
-	graph.addEdge('x','u');
-	graph.addEdge('x','y');
-	graph.addEdge('u','y');
-	graph.print_graph();
-	graph.print_graph();
-}
