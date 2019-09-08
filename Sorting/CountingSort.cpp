@@ -1,4 +1,6 @@
 #include <iostream>
+#include <bits/stdc++.h> 
+# define my_sizeof(type) ((char *)(&type+1)-(char*)(&type)) 
 using namespace std;
 
 int* countingSort(int arr [], int size);
@@ -42,12 +44,41 @@ int* countingSort(int arr [], int size) {
 	return B;
 }
 
+int max_value(int arr [], int n) {
+	int value = arr[0];
+	for (int i = 1; i < n; i++)
+		if (arr[i] > value)
+			value = arr[i];
+	return value;
+}
+
+void counting_sort(int arr[],int size) {
+	int max = max_value(arr,size);
+	int *B = new int[max+1];
+	
+	for (int i = 0; i < max; i++) 
+		B[i] = 0;
+	
+	for (int i = 0; i < size; i++)
+		B[arr[i]] += 1;
+	
+	int j = 0;
+	for (int i = 0; i < max+1; i++) {
+		int occurences = B[i];
+		if (occurences > 0) {
+			for (int k = 0; k < occurences; k++)
+				arr[j++] = i;
+		}
+	}
+}
+
 int main() {
 	int array [] = {2,5,3,0,2,3,0,3};
 	cout<<"Unsorted Array"<<endl;
 	for(int i =0; i<8; i++) cout<< array[i] <<" ";
 	cout<<endl;
-	int *sortedArray = countingSort(array,8);
+	counting_sort(array,8);
+	//int *sortedArray = countingSort(array,8);
 	cout<<"Sorted Array"<<endl;
-	for(int i =0; i<8; i++) cout<< sortedArray[i] <<" ";
+	for(int i =0; i<8; i++) cout<< array[i] <<" ";
 }
